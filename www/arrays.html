@@ -6,18 +6,22 @@
         <title>Exercícios com Arrays</title>
     </head>
     <body>
+        <button onclick="inicar()">Iniciar</button>
         <button onclick="inserir()">Inserir</button>
-        <button onclick="substituir()">Substituir</button>
+        <button onclick="substituir()">Substituir</button><br><br>
         <button onclick="iterador()">Iterador</button>
+        <button onclick="funcMap()">Função Map</button>
         <script>
             var coisas = ["estojo","caneta","enxada","martelo","colher","panela"];
             alert("Array global inicial:\n"+coisas);
-            coisas = coisas.sort();
-            alert("Depois do sort:\n"+coisas);
-            posColher = coisas.indexOf("colher");
-            posPanela = coisas.indexOf("panela");
-            parte = coisas.slice(posColher,posPanela);
-            alert("Criado outro array com slice:\n"+parte);
+            function iniciar(){
+                coisas = coisas.sort();
+                alert("Depois do sort:\n"+coisas);
+                posColher = coisas.indexOf("colher");
+                posPanela = coisas.indexOf("panela");
+                parte = coisas.slice(posColher,posPanela);
+                alert("Criado outro array com slice:\n"+parte);
+            }
 
             function inserir(){
                 var coisas2 = coisas.splice(2,0,"cadeira");
@@ -39,9 +43,22 @@
                 coisas4.forEach(alert);
                 alert("Utilizando uma função costumizada para o forEach");
                 coisas4.forEach(processaArray);
+                /*
+                    no forEach também pode ser feito assim:
+                    coisas4.forEach(function(elemento,index,array){
+                        alert(index+"=>"+elemento);
+                    });*/
+
             }
             function processaArray(element,index,array){
                 alert(index+"=>"+array[index]);
+            }
+            function funcMap(){
+                var nums = [1,4,5,6,2,8];
+                alert("Array nums:\n"+nums);
+                var paraParametro = function(el){return el +5};
+                var resultado = nums.map(paraParametro);
+                alert("Array result:\n"+resultado);
             }
         </script>
     </body>
