@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <script>
+        var todo = ["see doctor", "do assignment", "pay rent",
+            "check bank account", "clean room"];
+        var priority = [3, 4, 1, 2, 5];
+        var index = 0;
+        var todoInOrderOfPriority = [];
+
+        todoInOrderOfPriority.length = todo.length;//O array tem o tamanho bem definido com o mesmo tamanho de todo
+
+        while ( index < todo.length ) {
+                position = priority.indexOf( index+1 );//pega a posição do numero resultante do cálculo index+1 centro do array priority
+                todoInOrderOfPriority[index] = todo[position];//coloca o elemento da posição position no array todo dentro de todoInOrderOfPriority
+                console.log(
+                    "index=" + index + "\n" +
+                    "index+1=" + (index+1) + "\n" +
+                    "position=" + position + "\n" +
+                    "todo=" + todo + "\n" +
+                    "todoInOrderOfPriority=" + todoInOrderOfPriority );
+                index++;
+
+
+        }
+
+        alert("Previous order:\n\n" + todo + "\n\n"
+         + "Now in order of priority:\n\n" + todoInOrderOfPriority);
+
+        //RANDOM
+        var sorte = Math.random()*44;//pega um número de 0 até 0.9999999999999999 e multiplica por 43.99999999
+        sorte  = Math.floor(sorte);
+        alert("O numerod gerado e tirada a parte decimal é: "+sorte );
+    </script>
+</head>
+</html>

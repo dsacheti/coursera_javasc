@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Dalcinei Sacheti">
+        <title>Jogo de adivinhar</title>
+    </head>
+    <body id="corpo" onload="adivinha()">
+        <div>
+
+        </div>
+        <script>
+            posTent = -1;
+            posCor = -1;
+            var tentativa = "";
+            var vezes = 0;
+            var cores = ["aliceblue","black","crimson","deeppink","green","gold","moccasin","navy","purple","royalblue","sandybrown","seagreen"];
+            function adivinha(){
+                var resposta = Math.random() * 11;
+                resposta = Math.floor(resposta);
+                while(cores[posTent] != cores[resposta]){
+                    pedir();//prompt
+                    vezes++;
+                    posTent = cores.indexOf(tentativa);
+                    if(posTent == -1){
+                      alert("Esta cor não está na lista");
+                    }else if(posTent < resposta){
+                        alert("A cor está mais adiante na lista");
+                    }else if(posTent > resposta){
+                        alert("A cor está para trás na lista");
+                    }
+                }//a resposta certa tem que estar fora deste loop senão nunca será anunciada
+                if(cores[posTent] == cores[resposta]){
+                    document.getElementById("corpo").style.backgroundColor=cores[posTent];
+                    alert("Você acertou a cor : " + cores[posTent]+"\nem "+vezes +" tentativas");
+                    vezes = 0;
+
+                }
+            }
+            function pedir(){
+                tentativa = prompt("Adivinhe a cor em que eu estou pensando\n As cores da minha lista são:\n\naliceblue, black, crimson, deeppink, green, gold, moccasin, navy, purple, royalblue,sandybrown,seagreen");
+            }
+        </script>
+    </body>
+</html>

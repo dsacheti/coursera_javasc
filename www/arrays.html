@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Exercícios com Arrays</title>
+    </head>
+    <body>
+        <button onclick="inserir()">Inserir</button>
+        <button onclick="substituir()">Substituir</button>
+        <button onclick="iterador()">Iterador</button>
+        <script>
+            var coisas = ["estojo","caneta","enxada","martelo","colher","panela"];
+            alert("Array global inicial:\n"+coisas);
+            coisas = coisas.sort();
+            alert("Depois do sort:\n"+coisas);
+            posColher = coisas.indexOf("colher");
+            posPanela = coisas.indexOf("panela");
+            parte = coisas.slice(posColher,posPanela);
+            alert("Criado outro array com slice:\n"+parte);
+
+            function inserir(){
+                var coisas2 = coisas.splice(2,0,"cadeira");
+                alert("splice não cria outro array:"+coisas2);
+                alert("apenas coloca elementos em um array existente:\n"+coisas);
+            }
+            function substituir(){
+               var coisas3 = coisas;
+                alert("criada e populada com o array global:\n"+coisas3);
+                coisas3.splice(2,1,"sofá");
+                alert("Substituindo um elemento com splice:\n"+coisas3);
+            }
+            function iterador(){
+                var coisas4 = coisas;
+                for(var i=0;i<coisas4.length;i++){
+                    alert(i+"=>"+coisas4[i]+"\n");
+                }
+                alert("Com foreach");
+                coisas4.forEach(alert);
+                alert("Utilizando uma função costumizada para o forEach");
+                coisas4.forEach(processaArray);
+            }
+            function processaArray(element,index,array){
+                alert(index+"=>"+array[index]);
+            }
+        </script>
+    </body>
+</html>
